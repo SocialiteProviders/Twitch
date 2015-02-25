@@ -17,7 +17,9 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase('https://api.twitch.tv/kraken/oauth2/authorize', $state);
+        return $this->buildAuthUrlFromBase(
+            'https://api.twitch.tv/kraken/oauth2/authorize', $state
+        );
     }
 
     /**
@@ -33,7 +35,8 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get('https://api.twitch.tv/kraken/user?oauth_token='.$token, [
+        $response = $this->getHttpClient()->get(
+            'https://api.twitch.tv/kraken/user?oauth_token='.$token, [
             'headers' => [
                 'Accept' => 'application/json',
             ],
@@ -48,11 +51,8 @@ class Provider extends AbstractProvider implements ProviderInterface
     protected function mapUserToObject(array $user)
     {
         return (new User())->setRaw($user)->map([
-            'id'       => $user['_id'],
-            'nickname' => $user['display_name'],
-            'name'     => $user['name'],
-            'email'    => null,
-            'avatar'   => $user['logo'],
+            'id' => $user['_id'], 'nickname' => $user['display_name'],
+            'name' => $user['name'], 'email' => null, 'avatar' => $user['logo'],
         ]);
     }
 
@@ -61,6 +61,8 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenFields($code)
     {
-        return array_merge(parent::getTokenFields($code), ['grant_type' => 'authorization_code']);
+        return array_merge(parent::getTokenFields($code), [
+            'grant_type' => 'authorization_code',
+        ]);
     }
 }
