@@ -1,4 +1,5 @@
 <?php
+
 namespace SocialiteProviders\Twitch;
 
 use SocialiteProviders\Manager\SocialiteWasCalled;
