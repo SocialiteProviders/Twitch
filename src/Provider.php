@@ -14,6 +14,11 @@ class Provider extends AbstractProvider implements ProviderInterface
     protected $scopes = ['user_read'];
 
     /**
+     * {@inherticdoc}
+     */
+    protected $scopeSeparator = ' ';
+
+    /**
      * {@inheritdoc}
      */
     protected function getAuthUrl($state)
