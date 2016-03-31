@@ -19,7 +19,7 @@ class Provider extends AbstractProvider implements ProviderInterface
     protected $scopes = ['user_read'];
 
     /**
-     * {@inherticdoc}
+     * {@inherticdoc}.
      */
     protected $scopeSeparator = ' ';
 
